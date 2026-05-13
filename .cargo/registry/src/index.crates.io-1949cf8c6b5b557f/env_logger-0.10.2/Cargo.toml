@@ -110,7 +110,7 @@ version = "0.4.8"
 features = ["std"]
 
 [dependencies.regex]
-version = "1.0.3"
+version = "1.12.3"
 features = [
     "std",
     "perf",
