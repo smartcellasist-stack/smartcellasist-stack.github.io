@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SmartPhone Brasil — Os melhores iPhones e smartphones com os melhores preços da Amazon." />
+  <title>SmartPhone Brasil — iPhones com Melhores Preços</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f5f5f5; color: #222; }
+
+    /* NAV */
+    nav {
+      background: #111;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    nav .brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+      text-decoration: none;
+      margin-right: auto;
+    }
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    nav a:hover { color: #fff; }
+    .btn-amazon {
+      background: #FF9900;
+      color: #111 !important;
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none !important;
+    }
+    .btn-prime {
+      background: #00A8E1;
+      color: #fff !important;
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none !important;
+    }
+    .btn-amazon:hover { background: #e68a00; }
+    .btn-prime:hover { background: #0090c0; }
+    .btn-shopee {
+      background: #EE4D2D;
+      color: #fff !important;
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none !important;
+    }
+    .btn-shopee:hover { background: #d43f22; }
+
+    /* SHOPEE BANNER */
+    .shopee-banner {
+      background: linear-gradient(135deg, #EE4D2D, #ff7043);
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+      margin: 20px;
+      border-radius: 16px;
+    }
+    .shopee-banner h2 { font-size: 24px; font-weight: 800; margin-bottom: 10px; }
+    .shopee-banner p { margin-bottom: 20px; opacity: 0.9; }
+    .shopee-banner a {
+      background: #fff;
+      color: #EE4D2D;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+    .hero h1 { font-size: clamp(24px, 6vw, 48px); font-weight: 800; margin-bottom: 16px; }
+    .hero h1 em { color: #00A8E1; font-style: normal; }
+    .hero p { color: #aaa; margin-bottom: 28px; font-size: 16px; }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .hero-btns a {
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 15px;
+    }
+    .hero-btns .primary { background: #00A8E1; color: #fff; }
+    .hero-btns .secondary { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+
+    /* CATEGORIAS */
+    .section { padding: 40px 20px; max-width: 1100px; margin: 0 auto; }
+    .section h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; }
+    .cats { display: flex; gap: 10px; flex-wrap: wrap; }
+    .cats a {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px 16px;
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .cats a:hover { background: #00A8E1; color: #fff; border-color: #00A8E1; }
+
+    /* CARDS */
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+    }
+    .card .badge-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: #FF4444;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .card .badge-new { background: #7C3AED; }
+    .card .badge-value { background: #059669; }
+    .card .icon { font-size: 40px; text-align: center; margin: 16px 0 8px; }
+    .card .brand { color: #888; font-size: 12px; font-weight: 600; text-transform: uppercase; }
+    .card .name { font-weight: 700; font-size: 15px; }
+    .card .stars { color: #F59E0B; font-size: 13px; }
+    .card .price-new { font-size: 22px; font-weight: 800; color: #111; }
+    .card .price-old { font-size: 13px; color: #999; text-decoration: line-through; }
+    .card .discount { color: #16a34a; font-size: 13px; font-weight: 600; }
+    .card a.cta {
+      display: block;
+      text-align: center;
+      background: #FF9900;
+      color: #111;
+      font-weight: 700;
+      padding: 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: auto;
+      font-size: 14px;
+    }
+    .card a.cta:hover { background: #e68a00; }
+
+    /* PRIME BANNER */
+    .prime-banner {
+      background: linear-gradient(135deg, #00A8E1, #0070f3);
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+      margin: 20px;
+      border-radius: 16px;
+    }
+    .prime-banner h2 { font-size: 24px; font-weight: 800; margin-bottom: 10px; }
+    .prime-banner p { margin-bottom: 20px; opacity: 0.9; }
+    .prime-banner a {
+      background: #fff;
+      color: #0070f3;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    /* TABLE */
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; }
+    th { background: #111; color: #fff; padding: 12px 16px; text-align: left; font-size: 13px; }
+    td { padding: 12px 16px; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #f9f9f9; }
+
+    /* FOOTER */
+    footer {
+      background: #111;
+      color: #aaa;
+      padding: 40px 20px 20px;
+      margin-top: 40px;
+    }
+    .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    footer h4 { color: #fff; font-size: 14px; margin-bottom: 12px; }
+    footer a { color: #aaa; text-decoration: none; display: block; font-size: 13px; margin-bottom: 6px; }
+    footer a:hover { color: #fff; }
+    .footer-bottom { text-align: center; font-size: 12px; border-top: 1px solid #333; padding-top: 20px; }
+    .disclaimer {
+      background: #fff8e1;
+      border-left: 4px solid #FF9900;
+      padding: 14px 18px;
+      margin: 0 20px 20px;
+      border-radius: 0 8px 8px 0;
+      font-size: 13px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="brand" href="#">SmartPhoneBrasil</a>
+  <a href="#iphones">iPhones</a>
+  <a href="#notebooks">Notebooks</a>
+  <a href="#acessorios">Acessórios</a>
+  <a href="#bicicleta-eletrica">🚲 Bicicleta Elétrica</a>
+  <a class="btn-amazon" href="https://www.amazon.com.br" target="_blank">🛒 Ver Amazon</a>
+  <a class="btn-prime" href="https://www.primevideo.com?tag=martamz07-20&linkCode=abp&ref_=" target="_blank">🎬 Prime Video</a>
+  <a class="btn-shopee" href="https://s.shopee.com.br/2g7triVMfH" target="_blank">🛍️ Shopee</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">🇧🇷 Guia completo 2026</div>
+  <h1>Os melhores <em>iPhones</em><br>com o melhor preço</h1>
+  <p>Reviews honestos e os melhores preços da Amazon para você tomar a decisão certa.</p>
+  <div class="hero-btns">
+    <a class="primary" href="#iphones">📱 Ver iPhones</a>
+    <a class="secondary" href="#comparativo">Comparar modelos</a>
+  </div>
+</div>
+
+<!-- CATEGORIAS -->
+<div class="section">
+  <h2>Categorias</h2>
+  <div class="cats">
+    <a href="#iphones">📱 iPhones</a>
+    <a href="#notebooks">💻 Notebooks</a>
+    <a href="#acessorios">🎧 Fones</a>
+    <a href="#acessorios">⌚ Smartwatches</a>
+    <a href="#acessorios">🔋 Carregadores</a>
+    <a href="#acessorios">📷 Câmeras</a>
+  </div>
+</div>
+
+<!-- IPHONES -->
+<div class="section" id="iphones">
+  <h2>📱 iPhones em Destaque <a href="https://www.amazon.com.br/s?k=iphone&tag=smartamz07-20" style="font-size:14px;color:#00A8E1;float:right;font-weight:400;">Ver todos →</a></h2>
+  <div class="cards">
+    <div class="card">
+      <span class="badge-tag">🔥 Mais vendido</span>
+      <div class="icon">📱</div>
+      <div class="brand">Apple</div>
+      <div class="name">iPhone 16 128GB — Preto</div>
+      <div class="stars">★★★★★ (2.341)</div>
+      <div class="price-new">R$ 4.999</div>
+      <div class="price-old">R$ 5.799</div>
+      <div class="discount">-14%</div>
+      <a class="cta" href="https://www.amazon.com.br/s?k=iphone+16&tag=smartamz07-20" target="_blank">🛒 Ver na Amazon</a>
+    </div>
+    <div class="card">
+      <span class="badge-tag badge-new">✨ Novo</span>
+      <div class="icon">📱</div>
+      <div class="brand">Apple</div>
+      <div class="name">iPhone 16 Pro 256GB — Titânio</div>
+      <div class="stars">★★★★★ (1.876)</div>
+      <div class="price-new">R$ 7.499</div>
+      <div class="price-old">R$ 8.299</div>
+      <div class="discount">-10%</div>
+      <a class="cta" href="https://www.amazon.com.br/s?k=iphone+16+pro&tag=smartamz07-20" target="_blank">🛒 Ver na Amazon</a>
+    </div>
+    <div class="card">
+      <div class="icon">📱</div>
+      <div class="brand">Apple</div>
+      <div class="name">iPhone 15 128GB — Rosa</div>
+      <div class="stars">★★★★☆ (4.102)</div>
+      <div class="price-new">R$ 3.799</div>
+      <div class="price-old">R$ 4.499</div>
+      <div class="discount">-16%</div>
+      <a class="cta" href="https://www.amazon.com.br/s?k=iphone+15&tag=smartamz07-20" target="_blank">🛒 Ver na Amazon</a>
+    </div>
+    <div class="card">
+      <span class="badge-tag badge-value">💰 Custo-benefício</span>
+      <div class="icon">📱</div>
+      <div class="brand">Apple</div>
+      <div class="name">iPhone 14 128GB — Azul</div>
+      <div class="stars">★★★★☆ (6.540)</div>
+      <div class="price-new">R$ 2.999</div>
+      <div class="price-old">R$ 3.799</div>
+      <div class="discount">-21%</div>
+      <a class="cta" href="https://www.amazon.com.br/s?k=iphone+14&tag=smartamz07-20" target="_blank">🛒 Ver na Amazon</a>
+    </div>
+    <div class="card">
+      <span class="badge-tag badge-new">🟣 Destaque</span>
+      <div class="icon">📱</div>
+      <div class="brand">Apple</div>
+      <div class="name">iPhone 14 512GB — Roxo</div>
+      <div class="stars">★★★★½ (11)</div>
+      <div class="price-new">R$ 7.499</div>
+      <div class="discount">🚚 Entrega GRÁTIS</div>
+      <a class="cta" href="https://amzn.to/48VSYFZ" target="_blank">🛒 Ver na Amazon</a>
+    </div>
+  </div>
+</div>
+
+<!-- SHOPEE BANNER -->
+<div class="shopee-banner">
+  <h2>🛍️ Também na Shopee!</h2>
+  <p>Confira ofertas incríveis de smartphones e acessórios com frete grátis!</p>
+  <a href="https://s.shopee.com.br/2g7triVMfH" target="_blank">🔥 Ver ofertas na Shopee</a>
+</div>
+
+<!-- NOTEBOOKS -->
+<div class="section" id="notebooks">
+  <h2>💻 Notebooks <a href="https://www.amazon.com.br/s?k=notebook&tag=smartamz07-20" style="font-size:14px;color:#00A8E1;float:right;font-weight:400;">Ver todos →</a></h2>
+  <div class="cards">
+    <div class="card">
+      <span class="badge-tag">🔥 Top vendas</span>
+      <div class="icon">💻</div>
+      <div class="brand">Apple</div>
+      <div class="name">MacBook Air M2 — 8GB 256GB</div>
+      <div class="stars">★★★★★ (3.210)</div>
+      <div class="price-new">R$ 8.999</div>
+      <div class="price-old">R$ 10.499</div>
+      <div class="discount">-14%</div>
+      <a class="cta" href="https://www.amazon.com.br/s?k=macbook+air+m2&tag=smartamz07-20" target="_blank">🛒 Ver na Amazon</a>
+    </div>
+    <div class="card">
+      <div class="icon">💻</div>
+      <div class="brand">Samsung</div>
+      <div class="name">Galaxy Book4 — Intel Core i5 8GB</div>
+      <div class="stars">★★★★☆ (987)</div>
+      <div class="price-new">R$ 3.499</div>
+      <div class="price-old">R$ 4.199</div>
+      <div class="discount">-17%</div>
+      <a class="cta" href="https://www.amazon.com.br/s?k=samsung+galaxy+book4&tag=smartamz07-20" target="_blank">🛒 Ver na Amazon</a>
+    </div>
+    <div class="card">
+      <span class="badge-tag badge-value">💰 Melhor preço</span>
+      <div class="icon">💻</div>
+      <div class="brand">Lenovo</div>
+      <div class="name">IdeaPad 3i — Intel i5 8GB 512GB</div>
+      <div class="stars">★★★★☆ (2.154)</div>
+      <div class="price-new">R$ 2.799</div>
+      <div class="price-old">R$ 3.499</div>
+      <div class="discount">-20%</div>
+      <a class="cta" href="https://www.amazon.com.br/s?k=lenovo+ideapad+3i&tag=smartamz07-20" target="_blank">🛒 Ver na Amazon</a>
+    </div>
+  </div>
+</div>
+
+<!-- PRIME BANNER -->
+<div class="prime-banner">
+  <h2>Amazon Prime Day 2026</h2>
+  <p>Fique de olho nas maiores ofertas do ano em iPhones, notebooks e acessórios!</p>
+  <a href="https://www.amazon.com.br/prime?tag=smartamz07-20" target="_blank">⚡ Ativar Amazon Prime</a>
+</div>
+
+<!-- ACESSÓRIOS -->
+<div class="section" id="acessorios">
+  <h2>🎧 Acessórios <a href="https://www.amazon.com.br/s?k=acessorios+iphone&tag=smartamz07-20" style="font-size:14px;color:#00A8E1;float:right;font-weight:400;">Ver todos →</a></h2>
+  <div class="cards">
+    <div class="card">
+      <span class="badge-tag">🔥 Bestseller</span>
+      <div class="icon">🎧</div>
+      <div class="brand">Apple</div>
+      <div class="name">AirPods Pro (2ª Geração)</div>
+      <div class="stars">★★★★★ (8.432)</div>
+      <div class="price-new">R$ 1.699</div>
+      <div class="price-old">R$ 1.999</div>
+      <div class="discount">-15%</div>
+      <a class="cta" href="https://www.amazon.com.br/s?k=airpods+pro&tag=smartamz07-20" target="_blank">🛒 Ver na Amazon</a>
+    </div>
+    <div class="card">
+      <div class="icon">⌚</div>
+      <div class="brand">Apple</div>
+      <div class="name">Apple Watch Series 10 — 42mm</div>
+      <div class="stars">★★★★★ (1.234)</div>
+      <div class="price-new">R$ 3.299</div>
+      <div class="price-old">R$ 3.799</div>
+      <div class="discount">-13%</div>
+      <a class="cta" href="https://www.amazon.com.br/s?k=apple+watch+series+10&tag=smartamz07-20" target="_blank">🛒 Ver na Amazon</a>
+    </div>
+    <div class="card">
+      <div class="icon">🔋</div>
+      <div class="brand">Anker</div>
+      <div class="name">Carregador MagSafe 20W USB-C</div>
+      <div class="stars">★★★★☆ (3.876)</div>
+      <div class="price-new">R$ 149</div>
+      <div class="price-old">R$ 199</div>
+      <div class="discount">-25%</div>
+      <a class="cta" href="https://www.amazon.com.br/s?k=carregador+magsafe&tag=smartamz07-20" target="_blank">🛒 Ver na Amazon</a>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARATIVO -->
+<div class="section" id="comparativo">
+  <h2>⚖️ Comparativo iPhones 2026</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Modelo</th>
+          <th>Tela</th>
+          <th>Câmera</th>
+          <th>5G</th>
+          <th>Preço aprox.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>iPhone 16 Pro</strong></td><td>6.3" ProMotion</td><td>48MP+12MP+12MP</td><td>✓</td><td><strong>R$ 7.499</strong></td></tr>
+        <tr><td><strong>iPhone 16</strong></td><td>6.1" OLED</td><td>48MP+12MP</td><td>✓</td><td><strong>R$ 4.999</strong></td></tr>
+        <tr><td><strong>iPhone 15</strong></td><td>6.1" OLED</td><td>48MP+12MP</td><td>✓</td><td><strong>R$ 3.799</strong></td></tr>
+        <tr><td><strong>iPhone 14</strong></td><td>6.1" OLED</td><td>12MP+12MP</td><td>✓</td><td><strong>R$ 2.999</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- BICICLETA ELÉTRICA -->
+<div class="section" id="bicicleta-eletrica">
+  <h2>🚲 Bicicleta Elétrica em Destaque <a href="https://meli.la/1wppNxm" style="font-size:14px;color:#00A8E1;float:right;font-weight:400;" target="_blank">Ver no Mercado Livre →</a></h2>
+  <div class="cards">
+    <div class="card">
+      <span class="badge-tag">🔥 Mais vendido</span>
+      <div class="icon">🚲</div>
+      <div class="brand">Bicicleta Elétrica</div>
+      <div class="name">V20 Mini 750w 32Km — Autopropelido</div>
+      <div class="stars">★★★★★ (9) | +50 vendidos</div>
+      <div class="price-new">R$ 5.779</div>
+      <div class="discount">🚚 Entrega disponível</div>
+      <a class="cta" href="https://amzn.to/4d8Lp13" target="_blank">🛒 Ver na Amazon</a>
+      <a class="cta" href="https://meli.la/1wppNxm" target="_blank" style="background:#FFE600;color:#333;margin-top:6px;">🛍️ Ver no Mercado Livre</a>
+    </div>
+    <div class="card">
+      <span class="badge-tag badge-new">🟢 Destaque</span>
+      <div class="icon">🏍️</div>
+      <div class="brand">Bigniu</div>
+      <div class="name">BG-X Elétrica 800W 48V — Estilo Chopper</div>
+      <div class="stars">★★★★★</div>
+      <div class="price-new">R$ 1.599</div>
+      <div class="discount">🚚 Entrega disponível</div>
+      <a class="cta" href="https://amzn.to/4dqGTK8" target="_blank">🛒 Ver na Amazon</a>
+      <a class="cta" href="https://meli.la/1X31FdB" target="_blank" style="background:#FFE600;color:#333;margin-top:6px;">🛍️ Ver no Mercado Livre</a>
+    </div>
+  </div>
+</div>
+
+<div class="disclaimer">
+  ⚠️ <strong>Aviso de afiliado:</strong> SmartPhone Brasil participa do Programa de Afiliados da Amazon. Ao clicar nos links e realizar uma compra, recebemos uma comissão sem custo adicional para você.
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h4>SmartPhoneBrasil</h4>
+      <p style="font-size:13px;">Seu guia completo de tecnologia com reviews honestos e os melhores preços da Amazon.</p>
+    </div>
+    <div>
+      <h4>Categorias</h4>
+      <a href="#iphones">iPhones</a>
+      <a href="#notebooks">Notebooks</a>
+      <a href="#acessorios">Acessórios</a>
+      <a href="#acessorios">Smartwatches</a>
+      <a href="#bicicleta-eletrica">🚲 Bicicleta Elétrica</a>
+    </div>
+    <div>
+      <h4>Informações</h4>
+      <a href="#">Sobre nós</a>
+      <a href="#">Política de privacidade</a>
+      <a href="#">Contato</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 SmartPhone Brasil. Todos os direitos reservados. Feito com ❤️ para quem ama tecnologia
+  </div>
+</footer>
+
+</body>
+</html>

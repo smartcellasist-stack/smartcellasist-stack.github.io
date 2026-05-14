@@ -1,0 +1,8 @@
+mkdir ~/crypto-bot && cd ~/crypto-bot
+nano index.html
+git init
+git add index.html
+git commit -m "Iniciando site CryptoBot"
+git branch -M main
+git remote add origin https://github.com/smartcellasist-stack/crypto-bot.git
+

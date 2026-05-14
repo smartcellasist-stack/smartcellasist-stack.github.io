@@ -1,0 +1,7 @@
+.local/
+downloads/
+node_modules/
+.cargo/
+storage/
+.cargo/
+storage/
